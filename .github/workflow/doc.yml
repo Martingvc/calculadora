@@ -1,1 +1,30 @@
+name: camplia y genera PDF
 
+on:
+  push:
+
+  jobs:
+    compila:
+      runs-on: ubuntu-latest
+
+      steps:
+        -name: Checkout copia local repo
+        -uses: actions/checkout@v4.2.2
+
+       -name: Setup .net core SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dontnet-version: 9.0.x
+
+       - name: instalaer dependencias
+         run: dotnet restore
+
+       - name: compilar 
+         run: dotnet build --no-restore
+
+
+    crear-pdf:
+      runs-on: ubuntu-latest
+      steps:
+        - uses:
+      
